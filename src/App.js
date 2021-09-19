@@ -1,23 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import React, { useState, useEffect } from "react";
+import Dialog from "./components/Dialog";
+import Sidebar from "./components/Sidebar";
+import listUsers from "./users.json";
+import listMessage from "./messages.json";
+import TopDialog from "./components/TopDialog";
 
 function App() {
+  let [currentUserID, setCurrentUser] = useState(0);
+
+  useEffect(() => {
+    listMessage.forEach((user) => {
+      const key = `chat${user.chatId}`;
+
+      if (!localStorage.getItem(key)) {
+        localStorage.setItem(key, JSON.stringify(user));
+      }
+    });
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="wrapper">
+      <Sidebar listUsers={{ listUsers, setCurrentUser, listMessage }} />
+      <div className="chat-container">
+        <TopDialog listUsers={{ listUsers, currentUserID }} />
+        <Dialog listMessage={{ currentUserID, setCurrentUser }} />
+      </div>
+      <div className="bottom" />
     </div>
   );
 }

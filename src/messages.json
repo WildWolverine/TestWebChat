@@ -1,0 +1,37 @@
+[
+    {
+        "chatId": 1,
+        "messages": [
+            {
+                "text": "Message 1",
+                "isMe": true,
+                "date": "12:30 12/12/2012"
+            },
+            {
+                "text": "Message 1.1",
+                "isMe": true,
+                "date": "12:30 12/12/2012"
+            }
+        ]
+    },
+    {
+        "chatId": 2,
+        "messages": [
+            {
+                "text": "Message 2",
+                "isMe": true,
+                "date": "12:30 12/12/2012"
+            }
+        ]
+    },
+    {
+        "chatId": 3,
+        "messages": [
+            {
+                "text": "Message 3",
+                "isMe": true,
+                "date": "12:30 12/12/2012"
+            }
+        ]
+    }
+]
